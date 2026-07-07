@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUserStep1, loginUserStep2 } from '../redux/thunks/authThunks';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom'; // Go to the home page after logging in.
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [step, setStep] = useState(1);
@@ -14,19 +14,17 @@ const Login = () => {
     e.preventDefault();
     try {
       if (step === 1) {
-        // Step 1: Sending email and password
+        // நேரடியாக thunk-ஐ dispatch செய்து முடிவை காத்திருக்கிறோம்
         await dispatch(loginUserStep1({ email: formData.email, password: formData.password }));
         setStep(2);
         toast.success("OTP sent to your email!");
       } else {
-        // Step 2: Logging in by verifying the OTP
         await dispatch(loginUserStep2({ email: formData.email, otpCode: formData.otpCode }));
         toast.success("Login Successful!");
-        navigate('/'); // To redirect to the home page after login
+        navigate('/'); // லாகின் ஆனதும் ஹோம் பேஜிற்குச் செல்லவும்
       }
     } catch (err) {
-      // Displaying the error message from the backend
-      toast.error(err.response?.data?.message || "Something went wrong. Please check your credentials.");
+      toast.error(err.message || "Something went wrong. Please check your credentials.");
     }
   };
 
@@ -74,8 +72,6 @@ const Login = () => {
         <p className="mt-4 text-center">
           Don't have an account? <a href="/register" className="text-blue-600 font-bold">Register here</a>
         </p>
-
-
       </form>
     </div>
   );
