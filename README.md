@@ -23,8 +23,8 @@ This is a full-stack E-Commerce application built using the MERN Stack (MongoDB,
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone <your-repository-url>
-   cd <your-project-directory>
+   git clone https://github.com/gunasekaran006-alt/Module5-ecommerce-frontend.git
+   cd ecommerce-frontend
 
 ```
 
@@ -37,7 +37,7 @@ npm install
 
 3. Create a `.env` file in the root directory and add your backend API URL:
 ```env
-VITE_API_URL=[https://your-backend-api-url.com/api](https://your-backend-api-url.com/api)
+VITE_API_URL=m5-ecommerce.netlify.app
 
 ```
 
