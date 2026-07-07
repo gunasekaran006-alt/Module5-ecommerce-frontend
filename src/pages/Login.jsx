@@ -12,6 +12,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submit button pressed!"); // இதைச் சேர்த்துப் பாருங்கள்
     try {
       if (step === 1) {
         // நேரடியாக thunk-ஐ dispatch செய்து முடிவை காத்திருக்கிறோம்
