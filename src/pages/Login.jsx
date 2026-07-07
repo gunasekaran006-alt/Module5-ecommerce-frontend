@@ -12,17 +12,16 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit button pressed!"); // இதைச் சேர்த்துப் பாருங்கள்
+    console.log("Submit button pressed!"); 
     try {
       if (step === 1) {
-        // நேரடியாக thunk-ஐ dispatch செய்து முடிவை காத்திருக்கிறோம்
         await dispatch(loginUserStep1({ email: formData.email, password: formData.password }));
         setStep(2);
         toast.success("OTP sent to your email!");
       } else {
         await dispatch(loginUserStep2({ email: formData.email, otpCode: formData.otpCode }));
         toast.success("Login Successful!");
-        navigate('/'); // லாகின் ஆனதும் ஹோம் பேஜிற்குச் செல்லவும்
+        navigate('/');
       }
     } catch (err) {
       toast.error(err.message || "Something went wrong. Please check your credentials.");
